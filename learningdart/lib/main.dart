@@ -1,32 +1,72 @@
 import 'package:flutter/material.dart';
 
-const age = 31;
-const firstName = 'Xico';
-const lastName = 'Costa';
-const isFlutterAwesome = true;
-
-String getFullName(String firstName, String lastName) {
-  return '$firstName $lastName';
-}
-
 void main() {
   runApp(const MyApp());
 }
 
-void test(List<String>? names) {
-  const age = 30;
+enum Category { dart, flutter, android, ios }
 
-  final tamanho = names?.length ?? 0;
+class Person {
+  final String firstName;
+  final String lastName;
+  final int age;
 
-  print(tamanho);
+  const Person({
+    required this.firstName,
+    required this.lastName,
+    required this.age,
+  });
 
-  if (age > 30) {
-    print('You are over 30 years old');
-  } else if (age == 30) {
-    print('You are 30 years old');
-  } else {
-    print('You are under 30 years old');
+  String getFullName() {
+    return '$firstName $lastName';
   }
+
+  void printFullName() {
+    print(getFullName());
+  }
+
+  void printAge() {
+    print(age);
+  }
+
+  void printIsFlutterAwesome() {
+    print('Flutter is awesome');
+  }
+}
+
+void test() {
+  final person = Person(firstName: 'Xico', lastName: 'Costa', age: 31);
+  person.printFullName();
+  person.printAge();
+  person.printIsFlutterAwesome();
+  // switch (category) {
+  //   case Category.dart:
+  //     print('Dart');
+  //     break;
+  //   case Category.flutter:
+  //     print('Flutter');
+  //     break;
+  //   case Category.android:
+  //     print('Android');
+  //     break;
+  //   case Category.ios:
+  //     print('iOS');
+  //     break;
+  // }
+  // const age = 30;
+  // names?.add('Flutter');
+
+  // final tamanho = names?.length ?? 0;
+
+  // print(tamanho);
+
+  // if (age > 30) {
+  //   print('You are over 30 years old');
+  // } else if (age == 30) {
+  //   print('You are 30 years old');
+  // } else {
+  //   print('You are under 30 years old');
+  // }
 }
 
 const lista = ['Xico', 'Costa', 'Flutter', 'is', 'awesome'];
@@ -37,7 +77,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    test(["xico", "costa"]);
+    test();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
