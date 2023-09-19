@@ -57,6 +57,14 @@ class Dog extends Animal {
     return Dog('Edu', 3, 26.0);
   }
 
+  @override
+  bool operator ==(covariant Dog other) {
+    return name == other.name && age == other.age && weight == other.weight;
+  }
+
+  @override
+  int get hashCode => name.hashCode ^ age.hashCode ^ weight.hashCode;
+
   void bark() {
     print('Barking...');
   }
@@ -66,14 +74,17 @@ class Dog extends Animal {
   }
 }
 
-void test() {
+void test() async {
+  final soma = await sum(2, 4);
+  print(soma);
   const person = Person(firstName: 'Francisco', lastName: 'Costa', age: 31);
   person.printFullName();
   person.printAge();
   person.printIsFlutterAwesome();
   print(person.firstName);
-  final rex = Dog('Rex', 3, 26.0);
+  final rex = Dog('Edu', 3, 26.0);
   rex.printDog();
+
   // switch (category) {
   //   case Category.dart:
   //     print('Dart');
@@ -104,6 +115,11 @@ void test() {
   // }
 }
 
+Future<int> sum(int a, int b) async {
+  await Future.delayed(const Duration(seconds: 1));
+  return a + b;
+}
+
 const lista = ['Xico', 'Costa', 'Flutter', 'is', 'awesome'];
 
 class MyApp extends StatelessWidget {
@@ -113,6 +129,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     test();
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
