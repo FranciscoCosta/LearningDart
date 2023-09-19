@@ -74,9 +74,15 @@ class Dog extends Animal {
   }
 }
 
+Stream<String> getStream() {
+  return Stream.periodic(const Duration(seconds: 1), (value) => 'xico');
+}
+
 void test() async {
   final soma = await sum(2, 4);
-  print(soma);
+  await for (final value in getStream()) {
+    print(value);
+  }
   const person = Person(firstName: 'Francisco', lastName: 'Costa', age: 31);
   person.printFullName();
   person.printAge();
