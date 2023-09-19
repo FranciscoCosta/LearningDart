@@ -34,11 +34,46 @@ class Person {
   }
 }
 
+abstract class Animal {
+  //nao pode ser instanciada
+  void breathe() {
+    print('Breathing...');
+  }
+
+  void move() {
+    print('Moving...');
+  }
+}
+
+class Dog extends Animal {
+  final String name;
+  final int age;
+  final double weight;
+
+  Dog(this.name, this.age, this.weight);
+
+// utlizado para quando se repete a mesma instancia
+  factory Dog.edu() {
+    return Dog('Edu', 3, 26.0);
+  }
+
+  void bark() {
+    print('Barking...');
+  }
+
+  void printDog() {
+    print('Name: $name, Age: $age, Weight: $weight');
+  }
+}
+
 void test() {
-  final person = Person(firstName: 'Xico', lastName: 'Costa', age: 31);
+  const person = Person(firstName: 'Francisco', lastName: 'Costa', age: 31);
   person.printFullName();
   person.printAge();
   person.printIsFlutterAwesome();
+  print(person.firstName);
+  final rex = Dog('Rex', 3, 26.0);
+  rex.printDog();
   // switch (category) {
   //   case Category.dart:
   //     print('Dart');
