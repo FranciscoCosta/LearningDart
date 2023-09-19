@@ -13,13 +13,31 @@ void main() {
   runApp(const MyApp());
 }
 
+void test(List<String>? names) {
+  const age = 30;
+
+  final tamanho = names?.length ?? 0;
+
+  print(tamanho);
+
+  if (age > 30) {
+    print('You are over 30 years old');
+  } else if (age == 30) {
+    print('You are 30 years old');
+  } else {
+    print('You are under 30 years old');
+  }
+}
+
+const lista = ['Xico', 'Costa', 'Flutter', 'is', 'awesome'];
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print(getFullName(firstName, lastName));
+    test(["xico", "costa"]);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
